@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Catalog extends Migration
+class CreateProjectdataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class Catalog extends Migration
      */
     public function up()
     {
-        Schema::create('catalog', function (Blueprint $table) {
+        Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->string('title');
-            $table->string('text');
-            $table->integer('skill');
+            $table->text('skill_name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class Catalog extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalog');
+        Schema::dropIfExists('skills');
     }
 }
