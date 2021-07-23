@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ProjectController extends Controller
+class CatalogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class ProjectController extends Controller
 
     public function index()
     {
-        //
+        $catalogs = DB::table('catalog')->get();
+        return view('catalog', compact('catalogs'));
     }
 
     /**

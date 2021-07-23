@@ -1,0 +1,84 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: rgb(53, 53, 53);
+}
+h2 {
+    color: white;
+    text-align: center;
+    margin: 20px 0 20px;
+}
+table td {
+    background-color: white;
+}
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+table th:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+table th:last-child {
+    border-radius: 0 5px 0 0;
+    border-right: 1px solid #3c6690;
+}
+
+table th {
+    text-align: center;
+    color: white;
+    background: linear-gradient(#829ebc, #225588);
+    border-left: 1px solid #3c6690;
+    border-top: 1px solid #3c6690;
+    border-bottom: 1px solid #3c6690;
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+    width: 25%;
+    padding: 10px 0;
+}
+
+table td {
+    text-align: center;
+    border-left: 1px solid #a8b7c5;
+    border-bottom: 1px solid #a8b7c5;
+    border-top: none;
+    box-shadow: 0px -3px 5px 1px #eee inset;
+    width: 25%;
+    padding: 10px 0;
+}
+
+table td:last-child {
+    border-right: 1px solid #a8b7c5;
+}
+
+table tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+}
+
+table tr:last-child td:last-child {
+    border-radius: 0 0 5px 0;
+}
+.container_wrapper {
+    background-color: rgb(104, 104, 104);
+    .nav-bar.logo {
+        color: white;
+    }
+    button {
+        background-color: rgb(189, 189, 189);
+    }
+    .modal-header,
+    .modal-body {
+        padding: 5px 25px;
+    }
+    .modal-header {
+        border-bottom: 1px solid #ddd;
+    }
+}
