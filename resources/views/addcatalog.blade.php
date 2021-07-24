@@ -12,8 +12,7 @@
      <!-- Styles -->
      <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script> 
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
-     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
  </head>
  <body>
     <div class="container_wrapper">
@@ -29,32 +28,32 @@
         </div>
     </div>
  <div id="app">
-    <example-component></example-component>
-    <router-view></router-view>
+    <addcatalog-component></addcatalog-component>
 </div>
 
-<table>
-    <tr>
-        <th>No</th>
-        <th>案件名</th>
-        <th>使用技術</th>
-        <th>詳細</th>
-        <th>削除</th>
-    </tr>
-    @foreach ($catalogs as $catalog)
-    <tr>
-        <td>{{ $catalog->id }}</td>
-        <td>{{ $catalog->title }}</td>
-        @foreach ($skills as $skill)
-            @if ($skill->id === $catalog->skill)
-                <td>{{ $skill->skill_name }}</td>
-            @endif
-        @endforeach
-        <td><a href="{{route('catalog.show',['id' => $catalog->id])}}"><i class="far fa-eye"></i></a></td>
-        <td><a href="{{route('catalog.destroy',['id' => $catalog->id])}}"><i class="fas fa-times"></i></a></td>
-     </tr>
-    @endforeach
-</table>
+<div class="detail_container">
+    <form method="POST" action="{{ route('catalog.add')}}">
+        @csrf
+    <div class="title_wrapper">
+        <p>案件名</p>
+        <input type="text" value="" name="title">
+    </div>
+    <div class="text_wrapper">
+        <p>内容</p>
+        <textarea class="catalog_text" rows="10" cols="50"  wrap=”hard” name="text"></textarea>
+    </div>
+    <div class="skill_wrapper">
+        <p>使用技術</p>
+        <select name="skill">
+            @foreach ($skills as $skill)
+                <option value="{{$skill->id}}">{{$skill->skill_name}}</option> 
+            @endforeach
+        </select>
+    </div>
+    <input type="submit" value="登録" style="width: 20%;">      
+</form>
+</div>
+
 
  <!-- Scripts -->
  <script src="{{ mix('/js/app.js') }}" defer></script>

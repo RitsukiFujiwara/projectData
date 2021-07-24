@@ -15,6 +15,42 @@ h2 {
     text-align: center;
     margin: 20px 0 20px;
 }
+a {
+    color: black;
+}
+p {
+    color: white;
+    font-size: 16px;
+}
+select {
+    width: 20%;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+input {
+    width: 50%;
+    height: 50px;
+    margin-bottom: 30px;
+}
+// .router-link-active {
+//     color: white !important;
+//     text-decoration: none !important;
+// }
+// .router-link-active:hover {
+//     opacity: 0.7 !important;
+//     text-decoration: underline !important;
+// }
+.detail_container {
+    text-align: center;
+}
+.catalog_text {
+    width: 50%;
+    height: 100px;
+    margin-bottom: 30px;
+}
+.update_submit {
+    width: 20% !important;
+}
 table td {
     background-color: white;
 }
@@ -41,7 +77,7 @@ table th {
     border-top: 1px solid #3c6690;
     border-bottom: 1px solid #3c6690;
     box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
-    width: 25%;
+    width: 20%;
     padding: 10px 0;
 }
 
@@ -51,7 +87,7 @@ table td {
     border-bottom: 1px solid #a8b7c5;
     border-top: none;
     box-shadow: 0px -3px 5px 1px #eee inset;
-    width: 25%;
+    width: 20%;
     padding: 10px 0;
 }
 

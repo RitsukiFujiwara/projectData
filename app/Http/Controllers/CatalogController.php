@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +16,9 @@ class CatalogController extends Controller
 
     public function index()
     {
-        $catalogs = DB::table('catalog')->get();
-        return view('catalog', compact('catalogs'));
+        $catalogs = DB::table('catalogs')->get();
+        $skills = DB::table('skills')->get();
+        return view('catalog', compact('catalogs', 'skills'));
     }
 
     /**
@@ -47,7 +49,9 @@ class CatalogController extends Controller
      */
     public function show($id)
     {
-        //
+        $catalogs = DB::table('catalogs')->where('id', $id)->get();
+        $skills = DB::table('skills')->get();
+        return view('detail', compact('catalogs', 'skills'));
     }
 
 
@@ -69,9 +73,14 @@ class CatalogController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        //
+        $catalog = catalog::find($id);
+        $catalog->title = $request->input('title');
+        $catalog->text = $request->input('text');;
+        $catalog->skill = $request->input('skill');
+        $catalog->save();
+        return redirect('/catalog');
     }
 
 
@@ -83,6 +92,25 @@ class CatalogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        catalog::destroy($id);
+        return redirect('/catalog');
+    }
+
+
+    public function add(Request $request)
+    {
+        $catalog = new catalog;
+        $catalog->user_id = 1;
+        $catalog->title = $request->input('title');
+        $catalog->text = $request->input('text');;
+        $catalog->skill = $request->input('skill');
+        $catalog->save();
+        return redirect('/catalog/add');
+    }
+
+    public function data()
+    {
+        $skills = DB::table('skills')->get();
+        return view('addcatalog', compact('skills'));
     }
 }

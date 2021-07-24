@@ -4,11 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import HeaderComponent from "./components/HeaderComponent.vue";
-
+import VueRouter from 'vue-router';
+import router from './router'
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-
+Vue.use(VueRouter);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -23,6 +24,8 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 Vue.component('cataloglist-component', require('./components/CatalogListComponent.vue').default);
+Vue.component('detail-component', require('./components/DetailComponent.vue').default);
+Vue.component('addcatalog-component', require('./components/AddCatalogComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,4 +35,5 @@ Vue.component('cataloglist-component', require('./components/CatalogListComponen
 
 const app = new Vue({
     el: '#app',
+    router
 });
