@@ -10,6 +10,9 @@
      <title>{{ config('app.name', 'Vue Laravel SPA') }}</title>
  
      <!-- Styles -->
+     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+     <script src="{{asset('jquery-flexdatalist-2.3.0 2/jquery.flexdatalist.min.js')}}"></script>
+     <link rel="stylesheet" href="{{asset('jquery-flexdatalist-2.3.0 2/jquery.flexdatalist.min.css')}}">
      <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script> 
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
@@ -32,7 +35,24 @@
     <example-component></example-component>
     <router-view></router-view>
 </div>
-
+<div class="search_wrapper">
+    <div class="search_skill">
+        <input type="text" class="flexdatalist" name="inputName" autocomplete="on" list="datalist_skill" >
+        <datalist id="datalist_skill">
+            @foreach ($skills as $skill)
+                <option value="{{ $skill->id }}">{{ $skill->skill_name }}</option>
+            @endforeach
+        </datalist>
+    </div>
+    <div class="search_project">
+        <input name="inputName" autocomplete="on" list="datalist_project" type="text">
+        <datalist id="datalist_project">
+            @foreach ($catalogs as $catalog)
+                <option value="{{ $catalog->id }}">{{ $catalog->title }}</option>
+            @endforeach
+        </datalist>
+    </div>
+</div>
 <table>
     <tr>
         <th>No</th>
@@ -58,5 +78,14 @@
 
  <!-- Scripts -->
  <script src="{{ mix('/js/app.js') }}" defer></script>
+ <script>
+    const skills = @json($skills);
+   $('.flexdatalist').flexdatalist({
+    minLength: 1,
+         searchIn: 'skill_name',
+         searchContain: true,
+         data:skills
+});
+</script>
  </body>
  </html>

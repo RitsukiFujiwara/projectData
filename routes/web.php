@@ -30,6 +30,7 @@ Route::get('update/{id}', [App\Http\Controllers\CatalogController::class, 'updat
 Route::get('/catalog/add', [App\Http\Controllers\CatalogController::class, 'data'])->name('catalog.data');
 Route::post('/catalog/add/new', [App\Http\Controllers\CatalogController::class, 'add'])->name('catalog.add');
 Route::get('/destroy/{id}', [App\Http\Controllers\CatalogController::class, 'destroy'])->name('catalog.destroy');
+Route::get('/skill', [App\Http\Controllers\SkillController::class, 'index'])->name('skill.index');
 // Auth::routes();
 
 
