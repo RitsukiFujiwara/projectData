@@ -31,6 +31,10 @@ Route::get('/catalog/add', [App\Http\Controllers\CatalogController::class, 'data
 Route::post('/catalog/add/new', [App\Http\Controllers\CatalogController::class, 'add'])->name('catalog.add');
 Route::get('/destroy/{id}', [App\Http\Controllers\CatalogController::class, 'destroy'])->name('catalog.destroy');
 Route::get('/skill', [App\Http\Controllers\SkillController::class, 'index'])->name('skill.index');
+Route::post('/skill/add', [App\Http\Controllers\SkillController::class, 'create'])->name('skill.add');
+Route::get('/skill/update/{id}', [App\Http\Controllers\SkillController::class, 'update'])->name('skill.update');
+Route::get('/skill/show/{id}', [App\Http\Controllers\SkillController::class, 'show'])->name('skill.show');
+Route::get('/skill/destroy/{id}', [App\Http\Controllers\SkillController::class, 'destroy'])->name('skill.destroy');
 // Auth::routes();
 
 

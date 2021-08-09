@@ -10021,6 +10021,10 @@ p {
   font-size: 16px;
 }
 
+span {
+  color: white;
+}
+
 select {
   width: 20%;
   font-size: 20px;
@@ -10115,4 +10119,13 @@ table tr:last-child td:last-child {
 }
 .container_wrapper .modal-header {
   border-bottom: 1px solid #ddd;
+}
+
+.flexdatalist-alias {
+  width: 30%;
+  height: 30px;
+}
+
+.new_skill {
+  color: black;
 }

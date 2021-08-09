@@ -26,6 +26,8 @@ Vue.component('header-component', require('./components/HeaderComponent.vue').de
 Vue.component('cataloglist-component', require('./components/CatalogListComponent.vue').default);
 Vue.component('detail-component', require('./components/DetailComponent.vue').default);
 Vue.component('addcatalog-component', require('./components/AddCatalogComponent.vue').default);
+Vue.component('skill-component', require('./components/SkillComponent.vue').default);
+Vue.component('skilldetail-component', require('./components/SkillDetailComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

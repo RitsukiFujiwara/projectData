@@ -12,9 +12,8 @@
      <!-- Styles -->
      <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script> 
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
-     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.0.5/remodal.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.0.5/remodal.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.0.5/remodal-default-theme.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.0.5/remodal.min.js"></script>
@@ -33,8 +32,7 @@
         </div>
     </div>
  <div id="app">
-    <skill-component></skill-component>
-    <router-view></router-view>
+    <skilldetail-component></skilldetail-component>
 </div>
 <!-- モーダルに出てくる内容 -->
 <div class="remodal" data-remodal-id="modal">
@@ -49,23 +47,20 @@
         </div>
         <input type="submit" value="登録">  
     </form>
-    </div>
-<table>
-    <tr>
-        <th>No</th>
-        <th>技術名</th>
-        <th>詳細</th>
-        <th>削除</th>
-    </tr>
+</div>
+<div class="detail_container">
     @foreach ($skills as $skill)
-    <tr>
-        <td>{{ $skill->id }}</td>
-        <td>{{ $skill->skill_name }}</td>
-        <td><a href="{{route('skill.show',['id' => $skill->id])}}"><i class="far fa-eye"></i></a></td>
-        <td><a href="{{route('skill.destroy',['id' => $skill->id])}}"><i class="fas fa-times"></i></a></td>
-     </tr>
+    <form method="GET" action="{{ route('skill.update', ['id' => $skill->id]) }}">
+    @csrf
+    <div class="title_wrapper">
+        <p>技術名</p>
+        <input type="text" value="{{ $skill->skill_name }}" name="skill_name">
+    </div>
+    <input type="submit" style="width: 20%;" value="変更">      
+</form>
     @endforeach
-</table>
+</div>
+
 
  <!-- Scripts -->
  <script src="{{ mix('/js/app.js') }}" defer></script>
