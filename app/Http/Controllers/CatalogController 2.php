@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog;
+use App\Models\catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +16,7 @@ class CatalogController extends Controller
 
     public function index()
     {
-        $catalogs = Catalog::with('user')->get();
+        $catalogs = DB::table('catalogs')->get();
         $skills = DB::table('skills')->get();
         return view('catalog', compact('catalogs', 'skills'));
     }

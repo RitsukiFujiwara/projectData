@@ -13,16 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/catalog/add', function () {
     return view('addcatalog');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::get('/', 'App\Http\Controllers\CatalogController@index')->name('catalog.index');
+Route::get('/catalog', 'App\Http\Controllers\CatalogController@index')->name('catalog.index');
 Route::get('show/{id}', [App\Http\Controllers\CatalogController::class, 'show'])->name('catalog.show');
 Route::get('update/{id}', [App\Http\Controllers\CatalogController::class, 'update'])->name('catalog.update');
 Route::get('/catalog/add', [App\Http\Controllers\CatalogController::class, 'data'])->name('catalog.data');
