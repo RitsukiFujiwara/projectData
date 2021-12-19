@@ -10,7 +10,6 @@
      <title>{{ config('app.name', 'Vue Laravel SPA') }}</title>
  
      <!-- Styles -->
-     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
      <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script> 
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
@@ -27,38 +26,48 @@
                 <span class="nav-bar logo"><a href="{{route('catalog.index')}}">ProjectManagement</a></span>
                 <div>
                     <button class="btn"><a href="{{route('catalog.data')}}">新規登録</a></button>
-                    <button class="btn"><a href="{{route('skill.index')}}">技術管理</a></button>
-                    <button class="btn"><a href="">ログアウト</a></button>
+                    <button class="btn"><a href="#modal">技術追加</a></button>
+                    <button class="btn">ログアウト</button>
                 </div>
             </nav>
         </div>
     </div>
-    
- {{-- <div id="app">
-    <example-component></example-component>
+ <div id="app">
+    <skill-component></skill-component>
     <router-view></router-view>
-</div> --}}
-{{-- <div class="search_wrapper">
-    <div class="search_skill">
-        <span>スキル検索</span>
-        <input type="text" class="flexdatalist" name="inputName" autocomplete="on" list="datalist_skill" >
-        <datalist id="datalist_skill">
-            @foreach ($skills as $skill)
-                <option value="{{ $skill->id }}">{{ $skill->skill_name }}</option>
-            @endforeach
-        </datalist>
+</div>
+<!-- モーダルに出てくる内容 -->
+<div class="remodal" data-remodal-id="modal">
+    <!-- クローズボタン -->
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <form method="POST" action="{{ route('skill.add')}}">
+        @csrf
+        <h2 class="new_skill">新規技術登録</h2>
+        <div class="skill_add">
+            <label>技術名</label><br>
+            <input type="text" name="skill_name">
+        </div>
+        <input type="submit" value="登録">  
+    </form>
     </div>
-    <div class="search_project">
-        <span>案件検索</span>
-        <input name="inputName" autocomplete="on" list="datalist_project" type="text">
-        <datalist id="datalist_project">
-            @foreach ($catalogs as $catalog)
-                <option value="{{ $catalog->id }}">{{ $catalog->title }}</option>
-            @endforeach
-        </datalist>
-    </div>
-</div> --}}
+<table>
+    <tr>
+        <th>No</th>
+        <th>技術名</th>
+        <th>詳細</th>
+        <th>削除</th>
+    </tr>
+    @foreach ($skills as $skill)
+    <tr>
+        <td>{{ $skill->id }}</td>
+        <td>{{ $skill->skill_name }}</td>
+        <td><a href="{{route('skill.show',['id' => $skill->id])}}"><i class="far fa-eye"></i></a></td>
+        <td><a href="{{route('skill.destroy',['id' => $skill->id])}}"><i class="fas fa-times"></i></a></td>
+     </tr>
+    @endforeach
+</table>
 
-<main class="py-4">
-    @yield('content')
-</main>
+ <!-- Scripts -->
+ <script src="{{ mix('/js/app.js') }}" defer></script>
+ </body>
+ </html>

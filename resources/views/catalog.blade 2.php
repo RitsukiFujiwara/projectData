@@ -33,11 +33,10 @@
             </nav>
         </div>
     </div>
-    
- {{-- <div id="app">
+ <div id="app">
     <example-component></example-component>
     <router-view></router-view>
-</div> --}}
+</div>
 {{-- <div class="search_wrapper">
     <div class="search_skill">
         <span>スキル検索</span>
@@ -59,6 +58,31 @@
     </div>
 </div> --}}
 
-<main class="py-4">
-    @yield('content')
-</main>
+<table>
+    <tr>
+        <th>No</th>
+        <th>案件名</th>
+        <th>使用技術</th>
+        <th>詳細</th>
+        <th>削除</th>
+    </tr>
+    @foreach ($catalogs as $catalog)
+     <tr>
+        <td>{{ $catalog->id }}</td>
+        <td>{{ $catalog->title }}</td>
+        @foreach ($skills as $skill)
+            @if ($skill->id === $catalog->skill)
+                <td>{{ $skill->skill_name }}</td>
+            @endif
+        @endforeach
+        <td><a href="{{route('catalog.show',['id' => $catalog->id])}}"><i class="far fa-eye"></i></a></td>
+        <td><a href="{{route('catalog.destroy',['id' => $catalog->id])}}"><i class="fas fa-times"></i></a></td>
+      </tr>
+    @endforeach
+</table>
+
+ <!-- Scripts -->
+ <script src="{{ mix('/js/app.js') }}" defer></script>
+
+ </body>
+ </html>
