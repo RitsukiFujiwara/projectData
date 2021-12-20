@@ -4,29 +4,43 @@
 <div class="content_title">
     <h2>ProjectList</h2>
 </div>
+
+<div class="add_button">
+    <a href="{{route('catalog.data')}}"><i class="fas fa-plus"></i> NewProject</a>
+</div>
 @if ($catalogs)
-    <table>
-        <tr>
-            <th>No</th>
-            <th>案件名</th>
-            <th>使用技術</th>
-            <th>詳細</th>
-            <th>削除</th>
-        </tr>
-        @foreach ($catalogs as $catalog)
-         <tr>
-            <td>{{ $catalog->id }}</td>
-            <td>{{ $catalog->title }}</td>
+    
+    @foreach ($catalogs as $catalog)
+    <div class="content_wrapper">
+        <div class="content_item">
+            <p>{{ $catalog->title }}</p>
+        </div>
+        <div class="content_item">
+            <div class="hidden_box">
+                <label for="{{$catalog->id}}">▼詳細</label>
+                <input type="checkbox" id="{{$catalog->id}}"/>
+                <div class="hidden_show">
+                  <!--非表示ここから-->     
+                      <p>{{$catalog->text}}</p>
+                  <!--ここまで-->
+                </div>
+            </div>
+        </div>
+        <div class="content_item">
             @foreach ($skills as $skill)
                 @if ($skill->id === $catalog->skill)
-                    <td>{{ $skill->skill_name }}</td>
+                    <p>{{ $skill->skill_name }}</p>
                 @endif
             @endforeach
-            <td><a href="{{route('catalog.show',['id' => $catalog->id])}}"><i class="far fa-eye"></i></a></td>
-            <td><a href="{{route('catalog.destroy',['id' => $catalog->id])}}"><i class="fas fa-times"></i></a></td>
-          </tr>
-        @endforeach
-    </table>
+        </div>
+        <div class="content_item_icon">
+            <a href="{{route('catalog.show',['id' => $catalog->id])}}"><i class="fas fa-pen"></i></a>
+        </div>
+        <div class="content_item_icon">
+            <a href="{{route('catalog.destroy',['id' => $catalog->id])}}"><i class="fas fa-trash-alt"></i></a>
+        </div>
+    </div>
+    @endforeach
 @else
     Nodata
 @endif

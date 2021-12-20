@@ -30,6 +30,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "vue-js-modal": "^2.0.1",
         "vue-router": "^3.5.2"
     }
 }
