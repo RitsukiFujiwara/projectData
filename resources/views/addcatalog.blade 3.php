@@ -1,4 +1,4 @@
-{{-- <!doctype html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
      <meta charset="utf-8">
@@ -58,9 +58,4 @@
  <!-- Scripts -->
  <script src="{{ mix('/js/app.js') }}" defer></script>
  </body>
- </html> --}}
- @extends('layouts.app')
-
-@section('content')
- <addcatalog-component />
-@endsection
+ </html>

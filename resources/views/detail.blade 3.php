@@ -1,4 +1,4 @@
-{{-- <!doctype html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
      <meta charset="utf-8">
@@ -28,39 +28,40 @@
         </div>
     </div>
  <div id="app">
-    <addcatalog-component></addcatalog-component>
+    <detail-component></detail-component>
 </div>
 
 <div class="detail_container">
-    <form method="POST" action="{{ route('catalog.add')}}">
+    @foreach ($catalogs as $catalog)
+    <form method="GET" action="{{ route('catalog.update', ['id' => $catalog->id]) }}">
         @csrf
     <div class="title_wrapper">
         <p>案件名</p>
-        <input type="text" value="" name="title">
+        <input type="text" value="{{ $catalog->title }}" name="title">
     </div>
     <div class="text_wrapper">
         <p>内容</p>
-        <textarea class="catalog_text" rows="10" cols="50"  wrap=”hard” name="text"></textarea>
+        <textarea class="catalog_text" rows="10" cols="50"  wrap=”hard” name="text">{{ $catalog->text }}</textarea>
     </div>
     <div class="skill_wrapper">
         <p>使用技術</p>
         <select name="skill">
             @foreach ($skills as $skill)
-                <option value="{{$skill->id}}">{{$skill->skill_name}}</option> 
+            @if ($skill->id === $catalog->skill)
+            <option value="{{$skill->id}}" selected="selected">{{$skill->skill_name}}</option> 
+            @else
+            <option value="{{$skill->id}}">{{$skill->skill_name}}</option> 
+            @endif
             @endforeach
         </select>
     </div>
-    <input type="submit" value="登録" style="width: 20%;">      
+    <input type="submit" style="width: 20%;">      
 </form>
+    @endforeach
 </div>
 
 
  <!-- Scripts -->
  <script src="{{ mix('/js/app.js') }}" defer></script>
  </body>
- </html> --}}
- @extends('layouts.app')
-
-@section('content')
- <addcatalog-component />
-@endsection
+ </html>

@@ -10002,12 +10002,12 @@ h3 {
     border-color: #dee2e6;
   }
 }
-body {
-  background-color: #353535;
+main {
+  background-color: white;
 }
 
 h2 {
-  color: white;
+  color: #adadad;
   text-align: center;
   margin: 20px 0 20px;
 }
@@ -10016,13 +10016,17 @@ a {
   color: black;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 p {
-  color: white;
+  color: #adadad;
   font-size: 16px;
 }
 
 span {
-  color: white;
+  color: #adadad;
 }
 
 select {
@@ -10035,6 +10039,22 @@ input {
   width: 50%;
   height: 50px;
   margin-bottom: 30px;
+}
+
+.add_button a {
+  color: white;
+  background-color: #1e2740;
+  width: 120px;
+  padding: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: 50px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.add_button a:hover {
+  background-color: #5bd0ff;
+  transition: 0.8s;
 }
 
 .detail_container {
@@ -10051,67 +10071,15 @@ input {
   width: 20% !important;
 }
 
-table td {
-  background-color: white;
-}
-
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-table th:first-child {
-  border-radius: 5px 0 0 0;
-}
-
-table th:last-child {
-  border-radius: 0 5px 0 0;
-  border-right: 1px solid #3c6690;
-}
-
-table th {
-  text-align: center;
-  color: white;
-  background: linear-gradient(#829ebc, #225588);
-  border-left: 1px solid #3c6690;
-  border-top: 1px solid #3c6690;
-  border-bottom: 1px solid #3c6690;
-  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
-  width: 20%;
-  padding: 10px 0;
-}
-
-table td {
-  text-align: center;
-  border-left: 1px solid #a8b7c5;
-  border-bottom: 1px solid #a8b7c5;
-  border-top: none;
-  box-shadow: 0px -3px 5px 1px #eee inset;
-  width: 20%;
-  padding: 10px 0;
-}
-
-table td:last-child {
-  border-right: 1px solid #a8b7c5;
-}
-
-table tr:last-child td:first-child {
-  border-radius: 0 0 0 5px;
-}
-
-table tr:last-child td:last-child {
-  border-radius: 0 0 5px 0;
-}
-
 .container_wrapper {
-  background-color: #686868;
+  background-color: #1e2740;
 }
-.container_wrapper .nav-bar.logo {
+.container_wrapper a {
   color: white;
 }
-.container_wrapper button {
-  background-color: #bdbdbd;
+.container_wrapper button:hover {
+  background-color: #5bd0ff;
+  transition: 0.8s;
 }
 .container_wrapper .modal-header,
 .container_wrapper .modal-body {
@@ -10121,11 +10089,73 @@ table tr:last-child td:last-child {
   border-bottom: 1px solid #ddd;
 }
 
-.flexdatalist-alias {
-  width: 30%;
-  height: 30px;
-}
-
 .new_skill {
   color: black;
+}
+
+/* 親要素(コンテナ) */
+.content_wrapper {
+  display: flex;
+  border-bottom: 3px solid gray;
+  margin-right: 50px;
+  margin-left: 50px;
+  /* 子要素(アイテム) */
+}
+.content_wrapper .content_item_icon {
+  width: 10%;
+  margin-right: auto;
+}
+.content_wrapper .content_item_icon i {
+  padding: 25px 0;
+  margin-bottom: 0px;
+}
+.content_wrapper .content_item {
+  display: flex;
+  margin-right: 30px;
+  width: 60%;
+  max-width: 60%;
+  /*全体*/
+  /*ボタン装飾*/
+  /*ボタンホバー時*/
+  /*チェックは見えなくする*/
+  /*中身を非表示にしておく*/
+  /*クリックで中身表示*/
+}
+.content_wrapper .content_item p {
+  padding: 20px 0;
+  margin-bottom: 0px;
+}
+.content_wrapper .content_item .hidden_box {
+  padding: 0px;
+  margin-left: 20px;
+  position: relative;
+}
+.content_wrapper .content_item .hidden_box label {
+  padding: 5px;
+  font-weight: bold;
+  border: solid 1px gray;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  color: #adadad;
+  width: 60px;
+}
+.content_wrapper .content_item .hidden_box label:hover {
+  background: #efefef;
+}
+.content_wrapper .content_item .hidden_box input {
+  display: none;
+}
+.content_wrapper .content_item .hidden_box .hidden_show {
+  height: 0;
+  padding: 0;
+  margin-top: 40px;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.8s;
+}
+.content_wrapper .content_item .hidden_box input:checked ~ .hidden_show {
+  padding: 10px 0;
+  height: auto;
+  opacity: 1;
 }
