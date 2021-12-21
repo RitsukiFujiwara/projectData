@@ -14,11 +14,24 @@ class CatalogController extends Controller
      * @return Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $catalogs = Catalog::with('user')->get();
+        // $catalogs = Catalog::with('user')->get();
         $skills = DB::table('skills')->get();
-        return view('catalog', compact('catalogs', 'skills'));
+
+        $keyword = $request->input('keyword');
+        $search_skill = $request->input('skill');
+
+        $query = Catalog::query();
+
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%");
+        }
+        if (!empty($search_skill)) {
+            $query->where('skill', '=', $search_skill);
+        }
+        $results = $query->get();
+        return view('catalog', compact('skills', 'search_skill', 'keyword', 'results'));
     }
 
     /**
@@ -112,5 +125,24 @@ class CatalogController extends Controller
     {
         $skills = DB::table('skills')->get();
         return view('addcatalog', compact('skills'));
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $skill = $request->input('skill');
+
+        $query = Catalog::query();
+
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%");
+        }
+        if (!empty($skill)) {
+            $query->where('skill', '=', $skill);
+        }
+
+        $result = $query->get();
+
+        return view('catalog', compact('result', 'keyword', 'skill'));
     }
 }

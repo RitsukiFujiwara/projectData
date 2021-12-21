@@ -62,5 +62,10 @@
  @extends('layouts.app')
 
 @section('content')
- <addcatalog-component />
+<div id="app">
+    <addcatalog-component />
+</div>
+
+ <!-- Scripts -->
+ <script src="{{ mix('/js/app.js') }}" defer></script>
 @endsection

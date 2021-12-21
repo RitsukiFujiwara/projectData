@@ -1855,7 +1855,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+Vue.use(window["vue-js-modal"]["default"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    show: function show() {
+      this.$modal.show('hello-world');
+    },
+    hide: function hide() {
+      this.$modal.hide('hello-world');
+    }
+  }
+});
 
 /***/ }),
 
@@ -38035,22 +38051,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { attrs: { id: "app" } },
+    [
+      _c("button", { staticClass: "button", on: { click: _vm.show } }, [
+        _vm._v("show!")
+      ]),
+      _vm._v(" "),
+      _c(
+        "modal",
+        { attrs: { name: "hello-world", draggable: true, resizable: true } },
+        [
+          _c("div", { staticClass: "modal-header" }, [
+            _c("h2", [_vm._v("Modal title")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c("p", [_vm._v("you're reading this text in a modal!")]),
+            _vm._v(" "),
+            _c("button", { on: { click: _vm.hide } }, [_vm._v("閉じる")])
+          ])
+        ]
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("h2", [_vm._v("Project Add")])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

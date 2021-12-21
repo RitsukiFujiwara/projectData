@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        
         <button v-on:click="show" class="button">show!</button>
         <modal name="hello-world" :draggable="true" :resizable="true">
             <div class="modal-header">
@@ -15,16 +16,14 @@
 
 <script>
 Vue.use(window["vue-js-modal"].default);
-
-    export default {
-        el: '#app',
-        methods: {
-            show : function() {
-            this.$modal.show('hello-world');
-            },
-            hide : function () {
-            this.$modal.hide('hello-world');
-            },
-        }
-    }
+export default{
+      methods: {
+        show : function() {
+          this.$modal.show('hello-world');
+        },
+        hide : function () {
+          this.$modal.hide('hello-world');
+        },
+      }
+}
 </script>
