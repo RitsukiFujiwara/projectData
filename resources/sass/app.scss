@@ -31,7 +31,6 @@ span {
 }
 select {
     width: 20%;
-    font-size: 20px;
     margin-bottom: 30px;
 }
 input {
@@ -160,5 +159,35 @@ input {
             height: auto;
             opacity: 1;
         }
+    }
+}
+
+.search_area {
+    form {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+    select {
+        height: 30px;
+        font-size: none;
+    }
+    .input_keyword {
+        width: 30%;
+        height: 30px;
+        margin-left: 20%;
+    }
+    .submit_button {
+        width: 10%;
+        height: 30px;
+        color: $white-color;
+        background-color: $navy-color;
+        border: none;
+        border-radius: 5px;
+        padding: 3px;
+    }
+    .submit_button:hover {
+        background-color: rgb(91, 208, 255);
+        transition: 0.8s;
     }
 }

@@ -6,8 +6,7 @@
 </div>
 <div class="search_area">
     <form action="{{ route('catalog.index') }}" method="GET">
-        <p><input type="text" name="keyword" value="{{$keyword}}"></p>
-        <p>
+        <input type="text" name="keyword" value="{{$keyword}}" class="input_keyword" placeholder="プロジェクト名">
             <select name="skill">
                 <option value="">-</option>
                 @foreach ($skills as $skill)
@@ -18,8 +17,8 @@
                     @endif
                 @endforeach
             </select>
-        </p>
-        <p><input type="submit" value="検索"></p>
+        
+        <input type="submit" value="検索" class="submit_button">
     </form>
 </div>
 <div class="add_button">
@@ -33,7 +32,7 @@
         </div>
         <div class="content_item">
             <div class="hidden_box">
-                <label for="{{$result->id}}">▼詳細</label>
+                <label for="{{$result->id}}">▼内容</label>
                 <input type="checkbox" id="{{$result->id}}"/>
                 <div class="hidden_show">
                   <!--非表示ここから-->     

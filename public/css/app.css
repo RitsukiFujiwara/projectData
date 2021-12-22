@@ -10031,7 +10031,6 @@ span {
 
 select {
   width: 20%;
-  font-size: 20px;
   margin-bottom: 30px;
 }
 
@@ -10158,4 +10157,32 @@ input {
   padding: 10px 0;
   height: auto;
   opacity: 1;
+}
+
+.search_area form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+.search_area select {
+  height: 30px;
+  font-size: none;
+}
+.search_area .input_keyword {
+  width: 30%;
+  height: 30px;
+  margin-left: 20%;
+}
+.search_area .submit_button {
+  width: 10%;
+  height: 30px;
+  color: white;
+  background-color: #1e2740;
+  border: none;
+  border-radius: 5px;
+  padding: 3px;
+}
+.search_area .submit_button:hover {
+  background-color: #5bd0ff;
+  transition: 0.8s;
 }
