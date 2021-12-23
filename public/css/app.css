@@ -10030,12 +10030,14 @@ span {
 }
 
 select {
-  width: 20%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 30px;
 }
 
 input {
-  width: 50%;
+  width: 100%;
   height: 50px;
   margin-bottom: 30px;
 }
@@ -10061,7 +10063,7 @@ input {
 }
 
 .catalog_text {
-  width: 50%;
+  width: 100%;
   height: 100px;
   margin-bottom: 30px;
 }
@@ -10185,4 +10187,41 @@ input {
 .search_area .submit_button:hover {
   background-color: #5bd0ff;
   transition: 0.8s;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal__bg {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+
+.modal__content {
+  background: #fff;
+  left: 50%;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  position: relative;
+}
+.modal__content .js-modal-close {
+  position: absolute;
+  right: 8px;
+  top: 0px;
+  font-size: 25px;
 }

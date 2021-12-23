@@ -6,9 +6,10 @@
 </div>
 <div class="search_area">
     <form action="{{ route('catalog.index') }}" method="GET">
+    @csrf
         <input type="text" name="keyword" value="{{$keyword}}" class="input_keyword" placeholder="プロジェクト名">
             <select name="skill">
-                <option value="">-</option>
+                <option value="">使用技術を選択</option>
                 @foreach ($skills as $skill)
                     @if ($skill->id === (int)$search_skill)
                     <option value="{{$skill->id}}" selected="selected">{{$skill->skill_name}}</option>
@@ -22,8 +23,10 @@
     </form>
 </div>
 <div class="add_button">
-    <a href="{{route('catalog.data')}}"><i class="fas fa-plus"></i> NewProject</a>
+    <a class="js-modal-open" href=""><i class="fas fa-plus"></i> NewProject</a>
 </div>
+@include('inc.newProject')
+{{-- @include('inc.message') --}}
 @if ($results->count())
     @foreach ($results as $result)
     <div class="content_wrapper">

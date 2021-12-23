@@ -118,7 +118,7 @@ class CatalogController extends Controller
         $catalog->text = $request->input('text');;
         $catalog->skill = $request->input('skill');
         $catalog->save();
-        return redirect('/catalog/add');
+        return redirect('/');
     }
 
     public function data()

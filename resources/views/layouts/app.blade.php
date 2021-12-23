@@ -26,7 +26,6 @@
             <nav class="navbar">
                 <span class="nav-bar logo"><a href="{{route('catalog.index')}}">ProjectManagement</a></span>
                 <div>
-                    <button class="btn"><a href="{{route('catalog.data')}}">新規登録</a></button>
                     <button class="btn"><a href="{{route('skill.index')}}">技術管理</a></button>
                     <button class="btn"><a href="">ログアウト</a></button>
                 </div>
