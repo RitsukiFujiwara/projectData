@@ -121,6 +121,7 @@ class CatalogController extends Controller
         $catalog->text = $request->input('text');;
         $catalog->skill = $request->input('skill');
         $catalog->save();
+        session()->flash('message', '新規プロジェクトの登録が完了しました。');
         return redirect('/mypage');
     }
 

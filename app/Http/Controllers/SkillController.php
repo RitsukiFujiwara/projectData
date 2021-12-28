@@ -23,7 +23,7 @@ class SkillController extends Controller
         $skill = new skills;
         $skill->skill_name = $request->input('skill_name');
         $skill->save();
-        return redirect('/catalog');
+        return redirect('/mypage');
     }
     /**
      * Display the specified resource.
