@@ -8,6 +8,9 @@
 @import "~bootstrap/scss/bootstrap";
 $white-color: white;
 $navy-color: #1e2740;
+html {
+    background: $white-color;
+}
 main {
     background-color: $white-color;
 }
@@ -30,7 +33,7 @@ span {
     color: #adadad;
 }
 select {
-    width: 50%;
+    // width: 50%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
@@ -40,6 +43,62 @@ input {
     height: 50px;
     margin-bottom: 30px;
 }
+.logout_form {
+    display: inline;
+}
+.logout_submit {
+    margin-bottom: 0;
+    width: 26%;
+    height: 45px;
+    color: $white-color;
+    background-color: $navy-color;
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+}
+.logout_submit:hover {
+    background-color: rgb(91, 208, 255);
+    transition: 0.8s;
+}
+.signup_container {
+    padding: 40px;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    .submit_button {
+        width: 20%;
+        height: 45px;
+        color: $white-color;
+        background-color: $navy-color;
+        border: none;
+        border-radius: 5px;
+        padding: 3px;
+    }
+    .submit_button:hover {
+        background-color: rgb(91, 208, 255);
+        transition: 0.8s;
+    }
+}
+.login_container {
+    padding: 40px;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    .submit_button {
+        width: 20%;
+        height: 45px;
+        color: $white-color;
+        background-color: $navy-color;
+        border: none;
+        border-radius: 5px;
+        padding: 3px;
+    }
+    .submit_button:hover {
+        background-color: rgb(91, 208, 255);
+        transition: 0.8s;
+    }
+}
+
 .add_button {
     a {
         color: $white-color;
@@ -58,7 +117,11 @@ input {
     }
 }
 .detail_container {
-    text-align: center;
+    position: relative;
+    padding: 40px;
+    top: 50%;
+    left: 25%;
+    width: 60%;
 }
 .catalog_text {
     width: 100%;
@@ -100,7 +163,7 @@ input {
 
     /* 子要素(アイテム) */
     .content_item_icon {
-        width: 10%;
+        width: 7%;
         margin-right: auto;
         i {
             padding: 25px 0;

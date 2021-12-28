@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CatalogController extends Controller
@@ -16,7 +17,7 @@ class CatalogController extends Controller
 
     public function index(Request $request)
     {
-        // $catalogs = Catalog::with('user')->get();
+        $user = Auth::id();
         $skills = DB::table('skills')->get();
 
         $keyword = $request->input('keyword');
@@ -30,6 +31,7 @@ class CatalogController extends Controller
         if (!empty($search_skill)) {
             $query->where('skill', '=', $search_skill);
         }
+        $query->where('user_id', '=', $user);
         $results = $query->get();
         return view('catalog', compact('skills', 'search_skill', 'keyword', 'results'));
     }
@@ -93,7 +95,8 @@ class CatalogController extends Controller
         $catalog->text = $request->input('text');;
         $catalog->skill = $request->input('skill');
         $catalog->save();
-        return redirect('/catalog');
+        session()->flash('message', '更新が完了しました。');
+        return redirect('/mypage');
     }
 
 
@@ -113,12 +116,12 @@ class CatalogController extends Controller
     public function add(Request $request)
     {
         $catalog = new catalog;
-        $catalog->user_id = 1;
+        $catalog->user_id = Auth::id();
         $catalog->title = $request->input('title');
         $catalog->text = $request->input('text');;
         $catalog->skill = $request->input('skill');
         $catalog->save();
-        return redirect('/');
+        return redirect('/mypage');
     }
 
     public function data()
@@ -129,6 +132,7 @@ class CatalogController extends Controller
 
     public function search(Request $request)
     {
+        $user = Auth::id();
         $keyword = $request->input('keyword');
         $skill = $request->input('skill');
 
@@ -140,7 +144,7 @@ class CatalogController extends Controller
         if (!empty($skill)) {
             $query->where('skill', '=', $skill);
         }
-
+        $query->where('user_id', '=', $user);
         $result = $query->get();
 
         return view('catalog', compact('result', 'keyword', 'skill'));

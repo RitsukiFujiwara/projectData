@@ -17,47 +17,33 @@
      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script> 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
  </head>
  <body>
     <div class="container_wrapper">
         <div class="container">
             <nav class="navbar">
                 <span class="nav-bar logo"><a href="{{route('catalog.index')}}">ProjectManagement</a></span>
-                <div>
-                    <button class="btn"><a href="{{route('skill.index')}}">技術管理</a></button>
-                    <button class="btn"><a href="">ログアウト</a></button>
+                <div style="padding-right: 20px;">
+            @auth
+                <button class="btn"><a href="/mypage">MyProject一覧</a></button>
+                {{-- <button class="btn">ようこそ{{ auth()->user()->name }}さん</button> --}}
+                <button class="btn"><a href="{{route('skill.index')}}">技術管理</a></button>
+                {{-- <li> --}}
+                    <form action="/mypage/logout" method="post" class="logout_form">
+                    @csrf
+                        <input type="submit" value="ログアウト" class="logout_submit">
+                    </form>
+                {{-- </li> --}}
+            @else
+                <button class="btn"><a href="{{ route(('login')) }}"><i class="fas fa-sign-in-alt"></i>ログイン</a></button>
+            @endauth
                 </div>
             </nav>
         </div>
     </div>
-    
- {{-- <div id="app">
-    <example-component></example-component>
-    <router-view></router-view>
-</div> --}}
-{{-- <div class="search_wrapper">
-    <div class="search_skill">
-        <span>スキル検索</span>
-        <input type="text" class="flexdatalist" name="inputName" autocomplete="on" list="datalist_skill" >
-        <datalist id="datalist_skill">
-            @foreach ($skills as $skill)
-                <option value="{{ $skill->id }}">{{ $skill->skill_name }}</option>
-            @endforeach
-        </datalist>
-    </div>
-    <div class="search_project">
-        <span>案件検索</span>
-        <input name="inputName" autocomplete="on" list="datalist_project" type="text">
-        <datalist id="datalist_project">
-            @foreach ($catalogs as $catalog)
-                <option value="{{ $catalog->id }}">{{ $catalog->title }}</option>
-            @endforeach
-        </datalist>
-    </div>
-</div> --}}
-
 <main class="py-4">
     @yield('content')
 </main>

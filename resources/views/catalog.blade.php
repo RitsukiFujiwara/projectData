@@ -26,7 +26,7 @@
     <a class="js-modal-open" href=""><i class="fas fa-plus"></i> NewProject</a>
 </div>
 @include('inc.newProject')
-{{-- @include('inc.message') --}}
+@include('inc.message')
 @if ($results->count())
     @foreach ($results as $result)
     <div class="content_wrapper">
@@ -62,10 +62,6 @@
 @else
     Nodata
 @endif
-
-
-
-
 
  </body>
  </html>
